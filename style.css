@@ -105,7 +105,7 @@ main {
 }
 
 .day .d-head {
-    background: #7B8EF3;
+    background: var(--purple);
 
     border: none;
     border-radius: .8rem .8rem 0 0;
@@ -136,6 +136,7 @@ main {
     color: var(--dark);
 
     overflow: auto;
+    overflow-x: hidden;
 }
 
 .day .d-body p {
@@ -192,14 +193,39 @@ main {
     z-index: 2;
 }
 
-.modal-overlay.active {
+.modal-day {
+    width: 100%;
+    height: 100%;
+
+    background: rgba(0, 0, 0, 0.7);
+
+    position: fixed;
+    top: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    opacity: 0;
+    visibility: hidden;
+
+    z-index: 2;
+}
+
+.modal-overlay.active,
+.modal-day.active {
     opacity: 1;
     visibility: visible;
 }
 
 .modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     background: #f0f2f5;
-    padding: 3rem 10rem;
+    width: 100%;
+    height: 50%;
 
     position: relative;
     z-index: 1;
@@ -252,7 +278,7 @@ textarea {
     resize: none;
 }
 
-button {
+.save {
     width: 100%;
     height: 50px;
 
@@ -267,7 +293,7 @@ button {
     cursor: pointer;
 }
 
-button:hover {
+.save:hover {
     background: var(--light-green);
 }
 

@@ -33,7 +33,7 @@
       </main>
     </div>
 
-    <div class="add-day" onclick="Modal.open()">+</div>
+    <div class="add-day" onclick="Modal.openSing()">+</div>
 
     <div class="modal-overlay">
       <div class="modal">
@@ -57,13 +57,18 @@
             </div>
 
             <div class="input-group actions">
-              <a href="#" onclick="Modal.close()" class="button cancel"
-                >Cancelar</a
-              >
-              <button>Salvar</button>
+              <a href="#" onclick="Modal.closeSing()" class="button cancel"
+                >Cancelar</a>
+              <button class="save">Salvar</button>
             </div>
           </form>
         </div>
+      </div>
+    </div>
+
+    <div class="modal-day" id="modal-day">
+      <div class="modal" id="modal-info">
+          
       </div>
     </div>
 

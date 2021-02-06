@@ -1,16 +1,25 @@
 const Modal = {
-    open(){
+    openSing(){
       //abri modal
       //adicionar classe active ao modal
       document.querySelector('.modal-overlay').classList.add('active')
     },
-    close(){
+    closeSing(){
       //fechar modal
       //remover classe active do modal
       document.querySelector('.modal-overlay').classList.remove('active')
+    },
+    openInfo(){
+        document.querySelector('.modal-day').classList.add('active')
+        DOM.innerHTMLInfo()
+        
+    },
+    closeInfo(){
+        document.querySelector('.modal-day').classList.remove('active')
     }
 } 
 
+//armazenar dados
 const Storage = {
     p: document.querySelector("#day-p"),
     img: document.querySelector("#day-img"),
@@ -30,15 +39,68 @@ const Storage = {
     }
 }
 
+//adicionar novos dados
 const Day = {
     all: Storage.get(),
 
     add(day){
         Day.all.push(day)
         app.reload()
+    },
+    remove(index){
+        Day.all.splice(index, 1)
+
+        app.reload()
     }
 }
 
+const DOM = {
+    daysContainer: document.querySelector("#days"),
+    infoContainer: document.querySelector("#modal-info"),
+
+    addDay(day){
+        $(DOM.daysContainer).append( $(DOM.innerHTMLDay(day)));
+    },
+    innerHTMLDay(day){
+        const html = `
+            <div class="day" onClick="Modal.openInfo()">
+                <div class="d-head">
+                    <div class="title">${day.title}</div>
+                    <div class="date">${day.date}</div>
+                </div>
+                <div class="d-body">
+                    <p>
+                        ${day.description}
+                    </p>
+                </div>
+            </div>
+        `
+
+        return html
+    },
+    clearDay(){
+        DOM.daysContainer.innerHTML = ""
+    },
+    innerHTMLInfo(){
+        const html = `
+            <div>
+                Texto
+            </div>
+            <div>
+                <a href="#" onclick="Modal.closeInfo()" class="button cancel"
+                >Cancelar</a>
+                <button>Remove</button>
+                <button>Alterar</button>
+            </div>
+        `
+
+        return DOM.infoContainer.innerHTML = html
+    }
+}
+
+//receber dados
+//validar dados
+//formatar dados
 const Form = {
     title: document.querySelector("#title"),
     date: document.querySelector("#date"),
@@ -83,7 +145,7 @@ const Form = {
 
           Form.clearFields()
 
-          Modal.close()
+          Modal.closeSing()
 
           console.log(day.title)
 
@@ -91,6 +153,7 @@ const Form = {
             alert(error.message)
         }
     },
+
     clearFields() {
         Form.title.innerHTML = ""
         Form.date.innerHTML = ""
@@ -105,35 +168,10 @@ const Utils = {
     }
 }
 
-const DOM = {
-    daysContainer: document.querySelector("#days"),
+//carregar dados na pagina
 
-    addDay(day){
-        $(DOM.daysContainer).append( $(DOM.innerHTMLDay(day)));
 
-    },
-    innerHTMLDay(day){
-        const html = `
-            <div class="day">
-                <div class="d-head">
-                    <div class="title">${day.title}</div>
-                    <div class="date">${day.date}</div>
-                </div>
-                <div class="d-body">
-                    <p>
-                        ${day.description}
-                    </p>
-                </div>
-            </div>
-        `
-
-        return html
-    },
-    clearDay(){
-        DOM.daysContainer.innerHTML = ""
-    }
-}
-
+//atualizar page a cada carregamento
 const app = {
     init(){
         Day.all.forEach((day) => {
@@ -150,16 +188,15 @@ const app = {
 
 app.init()
 
-//armazenar dados
 
-//atualizar page a cada carregamento
 
-//carregar dados na pagina
 
-//adicionar novos dados
 
-//formatar dados
 
-//receber dados
 
-//validar dados
+
+
+
+
+
+
