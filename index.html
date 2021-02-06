@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>daily</title>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;0,700;1,100;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="./style.css" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <img id="logo" src="./assets/logo.svg" alt="Logo daily" />
+        <h1>Seu diario virtual</h1>
+      </header>
+      <main>
+        <section id="daily">
+          <h2 class="sr-only">Dailys</h2>
+
+          <div class="days" id="days">
+              <p id="day-p" class="sr-only">Você ainda não possui um day, clique no ícone + para adicionar o seu primeiro.</p>
+              <img id="day-img" class="sr-only" src="./assets/daily.svg" alt="daily imagem">
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div class="add-day" onclick="Modal.open()">+</div>
+
+    <div class="modal-overlay">
+      <div class="modal">
+        <div id="form">
+          <h2>Add day</h2>
+          <form action="" onsubmit="Form.submit(event)">
+            <div class="input-group">
+              <label class="sr-only" for="title">Title</label>
+              <input type="text" id="title" name="title" placeholder="Titulo" />
+            </div>
+
+            <div class="input-group">
+              <label class="sr-only" for="date">Data</label>
+              <input type="date" id="date" name="date" />
+            </div>
+
+            <div class="input-group">
+              <label class="label" for="description">Descrição</label>
+              <!--<textarea name="description" id="" cols="30" rows="10"></textarea>-->
+              <input type="text" id="description" name="description">
+            </div>
+
+            <div class="input-group actions">
+              <a href="#" onclick="Modal.close()" class="button cancel"
+                >Cancelar</a
+              >
+              <button>Salvar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script src="./script.js"></script>
+  </body>
+</html>

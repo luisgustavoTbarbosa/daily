@@ -1,0 +1,327 @@
+:root {
+    --purple: #6C63FF;
+    --dark: #838488;
+    --green: #49aa26;
+    --light-green: #3dd705;
+    --red: #e92929;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+}
+
+html {
+    font-size: 93.75%;
+}
+
+/* config scrollbar */
+::-webkit-scrollbar {
+    width: 0.3rem;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--dark);
+    border-radius: 1rem;
+}
+
+body {
+    height: 100vh;
+    background: #F0F0F9;
+    font-family: 'Poppins', sans-serif;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+}
+
+header {
+    height: 20vh;
+
+    background: var(--purple);
+
+    display: flex;
+
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+header h1 {
+    font-weight: 400;
+    color:#ffffff;
+}
+
+main {
+    height: 80vh;  
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+.days {
+    padding: 2rem 2rem 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.days p {
+    margin: 0 0 2rem;
+
+    color: var(--dark);
+    text-align: center;
+}
+
+.days img {
+    width: 100%;
+}
+
+.day {
+    background: #ffffff;
+
+    height: 200px;
+    width: 24rem;
+
+    border: none;
+    border-radius: .8rem;
+
+    margin-bottom: 1rem;
+
+    box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.219);
+}
+
+.day .d-head {
+    background: #7B8EF3;
+
+    border: none;
+    border-radius: .8rem .8rem 0 0;
+
+    height: 30%;
+
+    border-bottom: 1px solid #d2d4dd;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 1rem;
+
+    font-size: 19px;
+    font-weight: 400;
+
+    color: #fff;
+}
+
+.day .d-body {
+    height: 70%;
+
+    padding: 1rem 1rem 0;
+
+    font-weight: 400;
+
+    color: var(--dark);
+
+    overflow: auto;
+}
+
+.day .d-body p {
+    text-align: justify;    
+}
+
+.add-day {
+    height: 60px;
+    width: 60px;
+
+    border: none;
+    border-radius: 2rem;
+
+    background: var(--purple);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 2.4rem;
+
+    color: white;
+
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    
+    cursor: pointer;
+
+    box-shadow: 0px 2px 7px 0px rgba(0, 0, 0, 0.514);
+}
+
+.information {
+    margin: auto;
+    text-align: center;
+}
+
+.modal-overlay {
+    width: 100%;
+    height: 100%;
+
+    background: rgba(0, 0, 0, 0.7);
+
+    position: fixed;
+    top: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    opacity: 0;
+    visibility: hidden;
+
+    z-index: 2;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal {
+    background: #f0f2f5;
+    padding: 3rem 10rem;
+
+    position: relative;
+    z-index: 1;
+}
+
+#form {
+    max-width: 500px;
+}
+
+#form h2 {
+    margin-top: 0;
+    font-weight: 400;
+    color: var(--purple);
+}
+
+input {
+    border: none;
+    border-radius: 0.2rem;
+
+    padding: 0.8rem;
+
+    width: 100%;
+}
+
+.input-group {
+    margin-top: 0.8rem;
+}
+
+.input-group .help {
+    opacity: 0.4;
+}
+
+.input-group.actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.input-group.actions .button,
+.input-group.actions button {
+    width: 48%;
+}
+
+.label-textarea {
+    color: var(--dark);
+}
+
+textarea {
+    width: 100%;
+    resize: none;
+}
+
+button {
+    width: 100%;
+    height: 50px;
+
+    border: none;
+    border-radius: 0.25rem;
+    
+    color: white;
+    background: var(--green);
+
+    padding: 0;
+
+    cursor: pointer;
+}
+
+button:hover {
+    background: var(--light-green);
+}
+
+.button.cancel {
+    color: var(--red);
+    border: 2px var(--red) solid;
+    border-radius: 0.25rem;
+
+    height: 50px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    opacity: 0.6;
+
+    text-decoration: none;
+}
+
+.button.cancel:hover {
+    opacity: 1;
+}
+
+
+/*
+
+
+
+
+
+@media (min-width: 765px){
+
+    main #daily .days {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+
+        margin: 2rem 0;
+    }
+
+    .days .day {
+        margin-bottom: 0;
+    }
+
+    .add-day {
+        bottom: 1rem;
+        right: 0.2rem;
+    }
+
+    .add-day {
+        bottom: 2rem;
+        right: 1rem;
+    }
+}
+
+*/
+
