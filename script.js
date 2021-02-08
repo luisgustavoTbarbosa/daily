@@ -51,6 +51,7 @@ const Day = {
         Day.all.splice(index, 1)
 
         app.reload()
+        Modal.closeInfo()
     }
 }
 
@@ -81,16 +82,11 @@ const DOM = {
     clearDay(){
         DOM.daysContainer.innerHTML = ""
     },
-    innerHTMLInfo(){
+    innerHTMLInfo(index){
         const html = `
-            <div>
-                Texto
-            </div>
-            <div>
-                <a href="#" onclick="Modal.closeInfo()" class="button cancel"
-                >Cancelar</a>
-                <button>Remove</button>
-                <button>Alterar</button>
+            <div class="d-info">
+                <a class="buttons-info" href="#" onclick="Modal.closeInfo()"><img src="./assets/cancel.svg"></img></a>
+                <a class="buttons-info" href="#" onclick="Day.remove(${index})"><img src="./assets/remove.svg"></img></a>
             </div>
         `
 
@@ -132,6 +128,11 @@ const Form = {
             description
         }
     },
+    clearFields() {
+        Form.title.value = ""
+        Form.date.value = ""
+        Form.description.value = ""
+    },
 
     submit(event) { //function executada quando o usuario confirma o envio das informações
         event.preventDefault()
@@ -147,17 +148,13 @@ const Form = {
 
           Modal.closeSing()
 
+          Form.clearFields()
+
           console.log(day.title)
 
         } catch (error) {
             alert(error.message)
         }
-    },
-
-    clearFields() {
-        Form.title.innerHTML = ""
-        Form.date.innerHTML = ""
-        Form.description.innerHTML = ""
     }
 }
 

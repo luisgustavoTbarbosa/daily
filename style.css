@@ -193,6 +193,18 @@ main {
     z-index: 2;
 }
 
+.modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #f0f2f5;
+    padding: 4rem 5rem;
+
+    position: relative;
+    z-index: 1;
+}
+
 .modal-day {
     width: 100%;
     height: 100%;
@@ -212,23 +224,39 @@ main {
     z-index: 2;
 }
 
+.modal-info {
+    background: #f0f2f5;
+    height: 20%;
+    width: 80vw;
+
+    border-radius: .5rem;
+
+    position: relative;
+    z-index: 1;
+}
+
+.modal-info .d-info {
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    border-radius: .5rem;
+
+    padding: 0 .5rem;
+
+    background: var(--purple);
+}
+
+.buttons-info img {
+    width: 30px;
+}
+
 .modal-overlay.active,
 .modal-day.active {
     opacity: 1;
     visibility: visible;
-}
-
-.modal {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    background: #f0f2f5;
-    width: 100%;
-    height: 50%;
-
-    position: relative;
-    z-index: 1;
 }
 
 #form {
@@ -317,25 +345,27 @@ textarea {
     opacity: 1;
 }
 
-
-/*
-
-
-
-
-
 @media (min-width: 765px){
+    .days p {
+        margin: 0 0 2rem;
 
-    main #daily .days {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 1rem;
-
-        margin: 2rem 0;
+        font-size: 16px;
+    
+        color: var(--dark);
+        text-align: center;
+    }
+    
+    .days img {
+        width: 30%;
     }
 
-    .days .day {
-        margin-bottom: 0;
+    .day {
+        width: 30rem;
+        cursor: pointer;
+    }
+
+    .modal-info {
+        width: 20vw;
     }
 
     .add-day {
@@ -348,6 +378,3 @@ textarea {
         right: 1rem;
     }
 }
-
-*/
-
